@@ -23,18 +23,22 @@ int main(int argc, char** argv)
         C[i] = (double(i%100)/2);
     }
 
+
+//  loop1 with automatic parallel pragma 
     #pragma omp parallel for
     for (int i=0; i<D; i++)
         for(int j=0; j<D; j++)
             for(int k=0; k<D; k++)
                 C[i*D+j] += A[i*D+k] * B[k*D+j];
+// end of loop1
 
- /* 
-    int Nthrds = 4;
+/*
+// loop2 with mannually blocking
+    int Nthrds = omp_get_max_threads();
     
     int blockSize = D / Nthrds;
 
-    #pragma omp parallel
+    #pragma omp parallel num_threads(Nthrds)
     {
       int idx = omp_get_thread_num();
 
@@ -43,7 +47,9 @@ int main(int argc, char** argv)
                 for(int k=0; k<D; k++)
                     C[i*D+j] += A[i*D+k] * B[k*D+j];
     }
+//end of loop2
 */
+
     printf(" C[0] = %f\n", C[0]);
 }
 
