@@ -23,7 +23,7 @@ int main(int argc, char** argv)
         C[i] = (double(i%100)/2);
     }
 
-    #pragma omp prallel for
+    #pragma omp parallel for
     for (int i=0; i<D; i++)
         for(int j=0; j<D; j++)
             for(int k=0; k<D; k++)
