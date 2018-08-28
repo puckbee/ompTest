@@ -55,7 +55,7 @@ int main(int argc, char** argv)
 */
 
 /*    
-//  loop3 with write confliction (the logic is wrong, just for demonstrating)
+//  loop3 with write confliction (this loop is just for demonstration, meanless in logic)
     #pragma omp parallel for
     for (int i=0; i<D; i++)
         for(int j=0; j<D; j++)
@@ -65,7 +65,7 @@ int main(int argc, char** argv)
 */
  
 /*    
-// loop4 without reduction (there are write conflict on 'sum', so the result would be wrong)
+// loop4 without reduction (there are write conflict on 'sum', so the result is incorrect)
     double sum = 0;
     #pragma omp parallel for
     for(int i=0; i<D; i++)
